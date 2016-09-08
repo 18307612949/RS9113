@@ -1,0 +1,104 @@
+======================================================================
+API Version              : 0.3
+Date                     : 12 Nov 2015
+_______________________________________________________________________
+ 	Copyright (C) Redpine Signals, Inc 2015
+_______________________________________________________________________
+
+1.0 Release Status:
+===================
+
+	Alpha         ( )
+	Beta          ( )
+	Supplemental  ( )
+	Production    (X)
+	Test          ( )
+
+2.0 Features supported in this release:
+============================================
+1. Added examples for WLAN, BT, BLE, ZIGBEE and COEX mode
+2. Added apis for network applications
+3. Added apis for power save
+
+
+3.0 Known Issues
+===================================================
+1. BSD socket apis supports in blocking mode
+
+4.0 Limitations:
+================
+
+======================================================================
+API Version              : 0.2
+Date                     : 24 Sep 2015
+_______________________________________________________________________
+ 	Copyright (C) Redpine Signals, Inc 2015
+_______________________________________________________________________
+
+1.0 Release Status:
+===================
+
+	Alpha         ( )
+	Beta          (X)
+	Supplemental  ( )
+	Production    ( )
+	Test          ( )
+
+2.0 Features supported in this release:
+============================================
+1. Added BLE APIs
+2. Added COEX APIs
+2. Added ZB APIs
+
+
+3.0 Known Issues
+===================================================
+
+4.0 Limitations:
+================
+
+======================================================================
+API Version              : 0.1
+Date                     : 25 Aug 2015
+_______________________________________________________________________
+ 	Copyright (C) Redpine Signals, Inc 2015
+_______________________________________________________________________
+
+1.0 Release Status:
+===================
+
+	Alpha         ( )
+	Beta          (X)
+	Supplemental  ( )
+	Production    ( )
+	Test          ( )
+
+2.0 Features supported in this release:
+============================================
+1. WiFi client only mode
+   - Open 
+   - PSK
+   - EAP
+2. BSD sockets API support
+   - socket
+   - bind
+   - connect
+   - listen
+   - accept
+   - send
+   - sendto
+   - recv
+   - recvfrom
+   - shutdown
+   - socket_async
+3. IP configuration
+4. SSL
+5. DNS client
+
+
+3.0 Known Issues
+===================================================
+
+4.0 Limitations:
+================
+

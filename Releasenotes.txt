@@ -1,0 +1,1004 @@
+ Release           : RS9113.NBZ.NL.GENR.LNX.1.5.0
+ Date              : Aug 19th 2016
+_______________________________________________________________
+ 	Copyright (C) Redpine Signals, Inc 2016
+_______________________________________________________________
+
+Release Status:
+===================
+	Test         ( )
+	Alpha        ( )
+	Beta         ( )
+	Production   (X)
+
+Supported Hardware:
+=======================
+RS9113-NBZ-XXX Modules With SDIO / USB Interface
+
+Supported Software:
+=======================
+Kernel versions from 2.6.30 to 4.5-rc4
+
+Change log for Release 1.5.0 (WiFi, WiFi+BT/BLE, WiFi+ZB images)
+===============================================================
+
+1. #CE-3201 - Support for STA + BT dual mode 
+2. #CE-2736 - Driver support for higher kernel vesions [from 4.2 to 4.5-rc4] 
+
+WLAN
+=====
+
+New Features:
+============
+1. Added command for configuring management rate. Refer section 5.2 in RS9113-n-Link_Software_TRM-v1.5.0.pdf for command Usage
+
+Changes / Issues fixed
+======================
+1. 40Mhz is disabled by Default. Refer section 5.2 in RS9113-n-Link_Software_TRM-v1.5.0.pdf for enabling 40Mhz support
+2. #CE-3523 - Turning RS9113 into RF test mode (driver_mode=2) is working only in coex_mode=1, not working in coex mode 9
+3. #CE-3479 - UDP packet loss and throughput issues in 2.4GHz
+4. FCC,ETSI, TELEC and SRRC region base frequency selection is not proper in 5G bands and with DFS some channels are missed
+5. New programming values taken to resolve range and throughput issues in WLAN 
+
+Bluetooth
+=========
+
+New Features:
+============
+
+Changes / Issues fixed
+======================
+
+Zigbee
+=======
+
+New Features:
+============
+- 
+
+Changes / Issues fixed
+======================
+
+
+WLAN Limitations/Features NOT Supported:
+----------------------------------------
+1) Fragmentation is not supported.
+2) TX AMSDU is not supported.
+3) AMSDU's within AMPDU is not supported.
+4) Observed host gets stuck during scan on IMX51 Platform.
+5) Access Point mode through CFG80211 is supported for kernels greater than 3.3.
+6) Client mode through CFG80211 is supported from  2.6.38 kernel version.
+7) DFS Master through CFG80211 is supported for kernel versions greater than 3.11.
+8) WiFi Direct Mode through CFG80211 is not supported.
+9) Roaming through CFG80211 is supported in kernels greater than 3.11.
+10) In coex mode,wlan driver will not insert if the advertise interval is
+   greater than 6sec in power save.
+
+Bluetooth Recommendations:
+---------------------------------------------
+1) In BLE, recommended range of Connection Interval in
+   i)  Power Save - 100ms to 1.28sec.
+   ii) BT Classic + BLE Dual Mode is 200ms.
+   iii)WLAN + BLE coex - 30ms to 4sec
+2) In BLE, during Connection, equal values of Scan Interval and Scan Window is not recommended.
+3) In BT Classic, recommended value of Sniff Interval during Power Save is limited to 100ms(<= 100).
+4) In WLAN + BT Classic coex, for BT file transfer to work fine, recommended value of WLAN protocol DTIM is more 
+    than 3 and Beacon Interval is more than 200ms.
+
+
+Bluetooth Limitations/Features NOT Supported:
+---------------------------------------------
+1) In WLAN + BT Classic coex, file reception in BT may not happen for large files.
+2) In BLE, if device is acting as Master/Slave, Scan Window (in set_scan_params and create_connection command)
+   shall be less than the exisitng Connection Interval.
+3) In BLE, if Advertising/Scanning are in progress, and the device moves to Slave/Master role,
+   Advertising/Scanning will be stopped. Provide respective commands to start Advertising/Scanning 
+   while being in Slave/Master role.
+4) In WLAN + BLE coex, if BLE Connection is established with small Connection Interval(< 15ms),
+    simultaneous roles (i.e. Master/Slave + Advertising/Scanning) are not supported. 
+
+
+Zigbee Known Issues :
+---------------------
+1) In particular scenarios, coex switching is not happening in the WiFi+Zigbee coex mode.
+
+
+=========================================================
+Release 1.4.2 (WiFi, WiFi+BT/BLE, WiFi+ZB images)
+=========================================================
+
+--------------------------
+Change Log V1.4.2
+--------------------------
+
+--------------------------
+WLAN
+--------------------------
+
+New Features:
+-----------------------------------------
+1)None
+========================================================
+
+WLAN Limitations/Features NOT Supported:
+----------------------------------------
+1) Fragmentation is not supported.
+2) TX AMSDU is not supported.
+3) AMSDU's within AMPDU is not supported.
+4) Observed host gets stuck during scan on IMX51 Platform.
+5) Access Point mode through CFG80211 is supported for kernels greater than 3.3.
+6) Client mode through CFG80211 is supported from  2.6.38 kernel version.
+7) DFS Master through CFG80211 is supported for kernel versions greater than 3.11.
+8) WiFi Direct Mode through CFG80211 is not supported.
+9) Roaming through CFG80211 is supported in kernels greater than 3.11.
+10) In coex mode,wlan driver will not insert if the advertise interval is
+   greater than 6sec in power save.
+
+-------------------------------
+Bluetooth
+-------------------------------
+
+Bluetooth Limitations/Features NOT Supported:
+---------------------------------------------
+1) In WLAN + BT Classic coex, file reception in BT may not happen for large files.
+2) In BLE, if device is acting as Master/Slave, Scan Window (in set_scan_params and create_connection command)
+   shall be less than the exisitng Connection Interval.
+3) In BLE, if Advertising/Scanning are in progress, and the device moves to Slave/Master role,
+   Advertising/Scanning will be stopped. Provide respective commands to start Advertising/Scanning 
+   while being in Slave/Master role.
+4) In WLAN + BLE coex, if BLE Connection is established with small Connection Interval(< 15ms),
+    simultaneous roles (i.e. Master/Slave + Advertising/Scanning) are not supported. 
+
+BT/BLE Bug Fixes:
+-------------------
+1)PER Bug fixes.
+---------------------------
+Zigbee
+---------------------------
+New Features:
+-------------------------------------
+1.Zigbee Coordinator and Router support added.
+
+Zigbee Known Issues :
+---------------------
+1) In particular scenarios, coex switching is not happening in the WiFi+Zigbee coex mode.
+
+
+Release 1.4.1 (WiFi, WiFi+BT/BLE, WiFi+ZB images)
+=========================================================
+
+--------------------------
+Change Log V1.4.1
+--------------------------
+
+--------------------------
+WLAN
+--------------------------
+
+New Features:
+-----------------------------------------
+1) TELEC Regulatory Domain support added.
+
+WLAN Limitations/Features NOT Supported:
+----------------------------------------
+1) Fragmentation is not supported.
+2) TX AMSDU is not supported.
+3) AMSDU's within AMPDU is not supported.
+4) Observed host gets stuck during scan on IMX51 Platform.
+5) Access Point mode through CFG80211 is supported for kernels greater than 3.3.
+6) Client mode through CFG80211 is supported from  2.6.38 kernel version.
+7) DFS Master through CFG80211 is supported for kernel versions greater than 3.11.
+8) WiFi Direct Mode through CFG80211 is not supported.
+9) Roaming through CFG80211 is supported in kernels greater than 3.11.
+10) In coex mode,wlan driver will not insert if the advertise interval is
+   greater than 6sec in power save.
+
+-------------------------------
+Bluetooth
+-------------------------------
+
+Bluetooth Limitations/Features NOT Supported:
+---------------------------------------------
+1) In WLAN + BT Classic coex, file reception in BT may not happen for large files.
+2) In BLE, if device is acting as Master/Slave, Scan Window (in set_scan_params and create_connection command)
+   shall be less than the exisitng Connection Interval.
+3) In BLE, if Advertising/Scanning are in progress, and the device moves to Slave/Master role,
+   Advertising/Scanning will be stopped. Provide respective commands to start Advertising/Scanning 
+   while being in Slave/Master role.
+4) In WLAN + BLE coex, if BLE Connection is established with small Connection Interval(< 15ms),
+    simultaneous roles (i.e. Master/Slave + Advertising/Scanning) are not supported. 
+
+BT/BLE Bug Fixes:
+-------------------
+1) BLE Advertising gaps issue is fixed.
+
+---------------------------
+Zigbee
+---------------------------
+New Features:
+-------------------------------------
+1) Standalone ZigBee Router and coordinator support added.
+
+Zigbee Known Issues :
+---------------------
+1) In particular scenarios, coex switching is not happening in the WiFi+Zigbee coex mode.
+
+=========================================================
+Release 1.4.0 (WiFi, WiFi+BT/BLE, WiFi+ZB images)
+=========================================================
+
+--------------------------
+Change Log V1.4.0
+--------------------------
+
+Common Features Supported:
+---------------------------------------
+1) Enabling/disabling individual protocols in coex modes is supported.
+2) Insert and remove scripts per protocol(s) have been removed and relevant 
+   enable and disable scripts have been added. 
+   Refer to RS9113-n-Link_Software_TRM-v1.4.0.pdf section 4.1 for further 
+   details.
+3) Single SDIO and multiple USB modules can be used simultaneously for WLAN.
+
+--------------------------
+WLAN
+--------------------------
+
+New Features Added:
+-------------------
+1) Added support for MFi Wireless Accessory Configuration.
+
+WLAN Limitations/Features NOT Supported:
+----------------------------------------
+1) Fragmentation is not supported.
+2) TX AMSDU is not supported.
+3) AMSDU's within AMPDU is not supported.
+4) Observed host gets stuck during scan on IMX51 Platform.
+5) Access Point mode through CFG80211 is supported for kernels greater than 3.3 .
+6) DFS Master through CFG80211 is supported for kernel versions greater than 3.11 .
+7) WiFi Direct Mode through CFG80211 is not supported.
+8) Roaming through CFG80211 is supported in kernels greater than 3.11.
+9) In coex mode,wlan driver will not insert if the advertise interval is
+   greater than 6sec in power save.
+
+-------------------------------
+Bluetooth
+-------------------------------
+
+New Features Added:
+-------------------
+
+
+Bluetooth Recommendations:
+---------------------------------------------
+1) In BLE, recommended range of Connection Interval in
+   i)  Power Save - 100ms to 1.28sec.
+   ii) BT Classic + BLE Dual Mode is 200ms.
+   iii)WLAN + BLE coex - 30ms to 4sec
+2) In BLE, during Connection, equal values of Scan Interval and Scan Window is not recommended.
+3) In BT Classic, recommended value of Sniff Interval during Power Save is limited to 100ms(<= 100).
+4) In WLAN + BT Classic coex, for BT file transfer to work fine, recommended value of WLAN protocol DTIM is more 
+    than 3 and Beacon Interval is more than 200ms.
+
+Bluetooth Limitations/Features NOT Supported:
+---------------------------------------------
+1) In WLAN + BT Classic coex, file reception in BT may not happen for large files.
+2) In BLE, if device is acting as Master/Slave, Scan Window (in set_scan_params and create_connection command)
+   shall be less than the exisitng Connection Interval.
+3) In BLE, if Advertising/Scanning are in progress, and the device moves to Slave/Master role,
+   Advertising/Scanning will be stopped. Provide respective commands to start Advertising/Scanning 
+   while being in Slave/Master role.
+4) In WLAN + BLE coex, if BLE Connection is established with small Connection Interval(< 15ms),
+    simultaneous roles (i.e. Master/Slave + Advertising/Scanning) are not supported. 
+
+BT/BLE Bug Fixes:
+-------------------
+1) Issue with BLE Connect-Cancel command fixed.
+
+---------------------------
+Zigbee
+---------------------------
+
+Zigbee Known Issues :
+---------------------
+1) In particular scenarios, coex switching is not happening in the WiFi+Zigbee coex mode.
+
+
+=========================================================
+Release 1.3.2 (WiFi, WiFi+BT/BLE, WiFi+ZIGBEE images)
+=========================================================
+
+--------------------------
+Change Log V1.3.2
+--------------------------
+
+
+Limitations/Features NOT Supported:
+---------------------------------------
+1) Disabling individual protocols in coex modes is not supported.
+
+--------------------------
+WLAN
+--------------------------
+
+New Features Added:
+-------------------
+
+WLAN Limitations/Features NOT Supported:
+----------------------------------------
+1) Fragmentation is not supported.
+2) TX AMSDU is not supported.
+3) AMSDU's within AMPDU is not supported.
+4) Observed host gets stuck during scan on IMX51 Platform.
+5) Access Point mode through CFG80211 is supported for kernels greater than 3.3 .
+6) DFS Master through CFG80211 is supported for kernel versions greater than 3.11 .
+7) WiFi Direct Mode through CFG80211 is not supported.
+8) Roaming through CFG80211 is supported in kernels greater than 3.11.
+9) In coex mode,wlan driver will not insert if the advertise interval is
+   greater than 6sec in power save.
+
+-------------------------------
+Bluetooth
+-------------------------------
+
+New Features Added:
+-------------------
+
+BT/BLE Bug Fixes:
+-------------------
+1) Enchanced the handling of BLE HCI commands.
+2) Enhanced the performance of simultaneous roles (Advertising and Scanning).
+3) Fixed BLE Connection inconsistency issues.
+
+Bluetooth Recommendations:
+---------------------------------------------
+1) In BLE, recommended range of Connection Interval in
+   i)  Power Save - 100ms to 1.28sec.
+   ii) BT Classic + BLE Dual Mode is 200ms.
+   iii)WLAN + BLE coex - 30ms to 4sec
+2) In BLE, during Connection, equal values of Scan Interval and Scan Window is not recommended.
+3) In BT Classic, recommended value of Sniff Interval during Power Save is limited to 100ms(<= 100).
+4) In WLAN + BT Classic coex, for BT file transfer to work fine, recommended value of WLAN protocol DTIM is more 
+    than 3 and Beacon Interval is more than 200ms.
+
+Bluetooth Limitations/Features NOT Supported:
+---------------------------------------------
+1) In WLAN + BT Classic coex, file reception in BT may not happen for large files.
+2) In BLE, if device is acting as Master/Slave, Scan Window (in set_scan_params and create_connection command)
+   shall be less than the exisitng Connection Interval.
+3) In BLE, if Advertising/Scanning are in progress, and the device moves to Slave/Master role,
+   Advertising/Scanning will be stopped. Provide respective commands to start Advertising/Scanning 
+   while being in Slave/Master role.
+4) In WLAN + BLE coex, if BLE Connection is established with small Connection Interval(< 15ms),
+    simultaneous roles (i.e. Master/Slave + Advertising/Scanning) are not supported. 
+
+---------------------------
+Zigbee
+---------------------------
+
+Zigbee Known Issues :
+---------------------
+1) In particular scenarios, coex switching is not happening in the WiFi+Zigbee coex mode.
+
+
+
+=========================================================
+Release 1.3.1 (WiFi, WiFi+BT/BLE, WiFi+ZIGBEE images)
+=========================================================
+
+--------------------------
+Change Log V1.3.1
+--------------------------
+
+
+Limitations/Features NOT Supported:
+---------------------------------------
+1) Disabling individual protocols in coex modes is not supported.
+
+--------------------------
+WLAN
+--------------------------
+
+New Features Added:
+-------------------
+
+WLAN Limitations/Features NOT Supported:
+----------------------------------------
+1) Fragmentation is not supported.
+2) TX AMSDU is not supported.
+3) AMSDU's within AMPDU is not supported.
+4) Observed host gets stuck during scan on IMX51 Platform.
+5) Access Point mode through CFG80211 is supported for kernels greater than 3.3 .
+6) DFS Master through CFG80211 is supported for kernel versions greater than 3.11 .
+7) WiFi Direct Mode through CFG80211 is not supported.
+8) Roaming through CFG80211 is supported in kernels greater than 3.11.
+9) In coex mode,wlan driver will not insert if the advertise interval is
+   greater than 6sec in power save.
+
+-------------------------------
+Bluetooth
+-------------------------------
+
+New Features Added:
+-------------------
+1) BLE simultaneous Advertising and Scanning
+2) BLE simultaneous Slave, Advertising and Scanning
+3) BLE simultaneous Master, Advertising and Scanning
+
+BT/BLE Bug Fixes:
+-------------------
+1) Resolved continuous scanning issue.
+
+Bluetooth Limitations/Features NOT Supported:
+---------------------------------------------
+1) In BT Classic, recommended value of sniff interval during Power save is limited to 100msec(<= 100).
+2) In BT LE, recommended value of connection interval during Power save is between 100msec to 1.28sec.
+3) In coex, for BT Classic file transfer to work fine, recommended value of WLAN protocol DTIM is more 
+    than 3 and Beacon Interval is more than 200msec.
+4) In coex, in BT Classic, file reception may not happen for large files.
+5) In BT Dual mode recommended LE Connection interval is 200msec.
+6) In BT LE, during connection, equal values of scan interval and scan window is not recommended.
+7) In BT LE, Master/Slave + Advertising + Scanning combinations, Scan window shall be less than Connection Interval.
+8) In BT LE, if advertising/scanning are in progress, and the device moves to SLAVE/MASTER role,
+    advertising/scanning will be stopped. Provide respective commands to start advertising/scanning 
+    while being in SLAVE/MASTER role.
+9) In WLAN + BLE coex, if LE connection is established with small connection interval(< 15ms),
+    simultaneous roles (i.e. Master/Slave + Advertising/Scanning) are not supported. 
+10)In BT LE, it is recommended to use scanning window less than connection interval.
+
+---------------------------
+Zigbee
+---------------------------
+
+Zigbee Known Issues :
+---------------------
+1) In particular scenarios, coex switching is not happening in the WiFi+Zigbee coex mode.
+
+
+=========================================================
+Release 1.3.0 (WiFi, WiFi+BT/BLE, WiFi+ZIGBEE images)
+=========================================================
+
+--------------------------
+Change Log V1.3.0
+--------------------------
+
+1) Compilation procedure has been changed.
+   Please refer to Section "Compiling the Driver" in RS9113-n-Link_Software_TRM-v1.3.0.pdf document.
+2) Order of Loading the modules has changed and new kernel onebox_common_gpl.ko module is added.
+   Please refer to Section "Installing the Driver" in RS9113-n-Link_Software_TRM-v1.3.0.pdf document.
+3) Simultaneous Multiple USB modules support for WIFI only.
+4) Common hal Proc name will have devnum and devid appended to "onebox-mobile" for USB interface.
+5) Removal of protocols is not supported during operation i.e, wlan_remove.sh, bt_remove.sh, zigb_remove.sh are no longer functional.
+	Only remove_all.sh will be functional.
+6) Use the appropriate scripts for installing the Driver based on configuration selected in Menuconfig.
+
+Limitations/Features NOT Supported:
+---------------------------------------
+1) Disabling individual protocols in coex modes is not supported.
+
+--------------------------
+WLAN
+--------------------------
+1) Proc name is changed to rpine0,rpine1.. for WLAN.
+
+New Features Added:
+-------------------
+1) Added IPV6 support.
+
+WLAN Limitations/Features NOT Supported:
+----------------------------------------
+1) Fragmentation is not supported.
+2) TX AMSDU is not supported.
+3) AMSDU's within AMPDU is not supported.
+4) Observed host gets stuck during scan on IMX51 Platform.
+5) Access Point mode through CFG80211 is supported for kernels greater than 3.3 .
+6) DFS Master through CFG80211 is supported for kernel versions greater than 3.11 .
+7) WIFI Direct Mode through CFG80211 is not supported.
+8) Roaming through CFG80211 is supported in kernels greater than 3.11.
+9) In coex mode,wlan driver will not insert if the advertise interval is
+   greater than 6sec in power save.
+
+-------------------------------
+Bluetooth
+-------------------------------
+
+New Features Added:
+-------------------
+1) Coexistence of Bluetooth Dual Mode + WLAN AP is supported.
+
+BT/BLE Bug Fixes:
+-------------------
+1) Continous scanning issue in BLE.
+2) Interoperability issues with mobiles.
+3) Crash issues as a result of improper HCI events with few kernels.
+4) Basic issue with HCITOOL scan.
+5) Random hopping in BT PER mode.
+
+Bluetooth Limitations/Features NOT Supported:
+---------------------------------------------
+1) In BT Classic, recommended value of sniff interval during Power save is limited to 100msec(<= 100).
+2) In BT LE, recommended value of connection interval during Power save is between 100msec to 1.28sec.
+3) In coex, for BT Classic file transfer to work fine, recommended value of WLAN protocol DTIM is more 
+than 3 and Beacon Interval is more than 200msec.
+4) In coex, in BT Classic, file reception may not happen for large files.
+5) In BT Dual mode recommended LE Connection interval is 200msec.
+6) In BT LE, during connection, equal values of scan interval and scan window is not recommended.
+
+---------------------------
+Zigbee
+---------------------------
+
+Zigbee Known Issues :
+---------------------
+1) In particular scenerios coex switching is not happening in the WiFi+Zigbee coex mode.
+
+
+=========================================================
+Release 1.2.6 (WiFi, WiFi+BT/BLE, WiFi+ZIGBEE images)
+=========================================================
+
+--------------------------
+Change Log V1.2.6
+--------------------------
+
+1)Added antenna selection,rf power modes for individual protocols and country
+  based setting through module params.
+
+WLAN
+--------------------------
+1) Added CFG80211 support for Client and Access Point mode.
+2) Added Antenna diversity support.
+
+
+WLAN Bug Fixes:
+----------------------------------------
+1) Soft Lockup bug fix in Access Point mode.
+
+WLAN Limitations/Features NOT Supported:
+----------------------------------------
+1) Fragmentation is not supported.
+2) TX AMSDU is not supported.
+3) AMSDU's within AMPDU is not supported.
+4) Observed host gets stuck during scan on IMX51 Platform.
+5) Access Point mode through CFG80211 is supported for kernels greater than 3.3 .
+6) DFS Master through CFG80211 is supported for kernel versions greater than 3.11 .
+7) WIFI Direct Mode through CFG80211 is not supported.
+8) Roaming through CFG80211 is supported in kernels greater than 3.11.
+9)In coex mode,wlan driver will not insert if the advertise interval is
+   greater than 6sec in power save.
+
+-------------------------------
+Bluetooth
+-------------------------------
+
+New Features Added:
+-------------------
+1) Added single binary suport for Classic,LE Mode.
+
+
+Bluetooth Limitations/Features NOT Supported:
+---------------------------------------------
+1) In BT Classic, recommended value of sniff interval during Power save is limited to 100msec(<= 100).
+2) In BT LE, recommended value of connection interval during Power save is between 100msec to 1.28sec.
+3) In coex, for BT Classic file transfer to work fine, recommended value of WLAN protocol DTIM is more than 3 and Beacon Interval is more than 200msec.
+4) In coex, for BT Classic rx file transfer not happening for large files.
+
+---------------------------
+Zigbee
+---------------------------
+
+Zigbee Known Issues :
+---------------------
+1) In particular scenerios coex switching is not happening in the WiFi+Zigbee coex mode.
+
+===================================================
+Release 1.2.1(WiFi, WiFi+BT/BLE, WiFi+ZIGBEE images)
+===================================================
+
+--------------------------
+Change Log V1.2.1
+--------------------------
+
+WLAN
+--------------------------
+
+WLAN Bug Fixes:
+----------------------------------------
+1) USB LP powersave Regression issue.
+2) USB LP power number optimization.
+3) 40Mhz regression Issue.
+4) DFS - radar detection algorithm changes.
+
+WLAN Limitations/Features NOT Supported:
+----------------------------------------
+1) Fragmentation is not supported.
+2) TX AMSDU is not supported.
+3) AMSDU's within AMPDU is not supported.
+4) Observed host gets stuck during scan on IMX51 Platform.
+5) USB interface is not supported on USB 3.0 host controllers.
+
+-------------------------------
+Bluetooth
+-------------------------------
+
+Bluetooth Limitations/Features NOT Supported:
+---------------------------------------------
+1) In BT Classic, recommended value of sniff interval during Power save is limited to 100msec(<= 100).
+2) In BT LE, recommended value of connection interval during Power save is limited to 100msec(<= 100).
+3) Observed issues in BT Classic coex ULP Powersave regressions.
+4) Observed issues in BT LE coex ULP Powersave regressions.
+5) In coex, for BT Classic file transfer to work fine, recommended value of WLAN protocol DTIM is more than 3 and Beacon Interval is more than 200msec.
+6) USB interface is not supported on USB 3.0 host controllers.
+
+---------------------------
+ZigBee
+---------------------------
+
+ZigBee Limitations/Features NOT Supported:
+------------------------------------------
+1) In particular scenarios coex switching is not happening in the WiFi+ZigBee coex mode.
+2) USB interface is not supported on USB 3.0 host controllers.
+
+
+===================================================
+Release 1.2.0 (WiFi, WiFi+BT/BLE, WiFi+ZIGBEE images)
+===================================================
+
+
+--------------------------
+Change Log V1.2.0
+--------------------------
+
+WLAN
+--------------------------
+
+New Features Added:
+---------------------------
+
+1) ULP Powersave support.  
+2) Support for DFS Master.
+3) Support for DFS Client(CSA and QUIET).
+4) 11D regulatory domain for client mode.
+5) Support for controlling Tx power.
+6) Added IOCTL's for set_country, Tx Power, antenna selection, link quality.
+7) Wake-On-WLAN support.
+8) 40MHz support.
+9) USB LP Powersave support.
+
+WLAN Bug Fixes:
+----------------------------------------
+1) USB full speed issue.
+2) Rx throughput issues with some testbed Access Points.
+
+WLAN Limitations/Features NOT Supported:
+----------------------------------------
+1) Fragmentation is not supported.
+2) TX AMSDU is not supported.
+3) AMSDU's within AMPDU is not supported.
+4) Observed host gets stucked during scan on IMX51 Platform.
+5) USB interface is not supported on USB 3.0 host controllers.
+6) USB LP Powersave is not verified on Embedded boards(due to the compilation
+limitations in the BSP after enabling CONFIG_PM feature in the Kernel config
+file)
+
+-------------------------------
+Bluetooth
+-------------------------------
+
+New Features Added:
+---------------------------
+
+BT Classic
+==========
+1) BT Classic ULP Power Save support
+2) Poll Interval support in the Master
+3) PER support 
+
+BT LE
+=======
+1) BT-LE ULP Power Save support
+2) PER support 
+
+BT Classic Bug fixes:
+--------------------
+1) BT device discovery issue
+2) BT OBEX file transfer issue
+3) Performance issues observed during SIG Certification
+4) BT NULL adapter issue in the Driver
+
+BT LE Bug Fixes:
+------------------
+1) Multiple times connect and disconnect issue
+2) Performance issues observed during SIG Certification
+3) Improved coex throughputs
+
+Bluetooth Limitations/Features NOT Supported:
+---------------------------------------------
+1) In BT Classic, recommended value of sniff interval during Power save is limited to 100msec(<= 100).
+2) In BT LE, recommended value of connection interval during Power save is limited to 100msec(<= 100).
+3) Observed issues in BT Classic coex ULP Powersave regressions.
+4) Observed issues in BT LE coex ULP Powersave regressions.
+5) In coex, for BT Classic file transfer to work fine, recommended value of WLAN protocol DTIM is more than 3 and Beacon Interval is more than 200msec.
+
+---------------------------
+ZigBee
+---------------------------
+
+New Features Added:
+---------------------------
+1) ZigBee ULP Power Save support
+2) ZigBee PER End to End support
+
+ZigBee Limitations/Features NOT Supported:
+------------------------------------------
+1) In particular scenarios coex switching is not happening in the WiFi+ZigBee coex mode.
+2) USB interface is not supported on USB 3.0 host controllers.
+
+===================================================
+Release 1.1.3 (WiFi, WiFi+BT/BLE, WiFi+ZIGBEE images)
+===================================================
+
+**************************
+Change Log V1.1.3
+**************************
+
+--------------------------
+WLAN
+--------------------------
+1) Added support for 64 bit Platforms.
+2) Upgraded Bootloader to 1.6 version.
+3) Manufacturing Software.
+4) TX Performance Enhancements.
+
+
+New Features Added:
+---------------------------
+
+Enhancements:
+...........................
+1) Upgraded Bootloader to 1.6 version.
+2) Manufacturing Software.
+3) TX Performance Enhancements.
+4) Support for FCC and ETSI with ioctl.
+5) Temparature based PPM offset correction.
+6) Antenna GAIN changes.
+
+WLAN Bug Fixes:
+----------------------------------------
+1) USB TX throughput Bug fix.
+2) Fix for the beacon miss while performing Bgscan.
+3) Fixed wlan remove issue while running WLAN BT coexistence. 
+
+WLAN Limitations/Features NOT Supported:
+----------------------------------------
+1) 40Mhz is not supported.
+--------------------------
+BT
+--------------------------
+BT Classic Bug Fixes:
+----------------------------------------
+1) BT Discovery issue fixed.
+2) BT Obex file transfer issue fixed.
+3) BT null adapter issue fixed. 
+
+BT LE Bug Fixes:
+----------------------------------------
+1) BLE multiple connect and disconnect is fixed.
+
+
+Bluetooth Limitations/Features NOT Supported:
+----------------------------------------
+1) Role switch and sniff mode is not supported in the coex mode.
+2) BT Continuous Inquriy for more than 1hr is not working.
+3) BT LE in the co-ex mode advertising is getting stucked few times.
+
+
+===================================================
+Release 1.1.0 (WiFi, WiFi+BT/BLE, WiFi+ZIGBEE images)
+===================================================
+
+
+--------------------------
+Change Log V1.1.0
+--------------------------
+
+WLAN
+--------------------------
+
+New Features Added:
+---------------------------
+
+1) ULP Powersave support.  
+2) Added support for DFS client(CSA and QUIET).
+3) 11D regulatory domain for client mode.
+4) Added support for controlling TX power.
+5) 40Mhz support in AP mode.
+6) Added IOCTL's for set_country, TX Power, antenna selection.
+
+WLAN Bug Fixes:
+----------------------------------------
+1) USB Full Speed issue Fixed.
+2) RX Throughput Issues with Some Testbed Access Points.
+
+WLAN Limitations/Features NOT Supported:
+----------------------------------------
+1) Fragmentation is not supported.
+2) TX AMSDU is not supported.
+3) AMSDU's within AMPDU is not supported.
+4) ULP Power save is not supported in USB.
+5) Observed host gets stucked during scan on IMX51 Platform.
+6) ULP Power save is not Supported in COEX Mode.
+7) USB interface is not supported on USB 3.0 host controllers.
+8) Observed Data packets with length greater than RTS threshold are not sent. 
+
+
+-------------------------------
+Bluetooth
+-------------------------------
+
+New Features Added:
+---------------------------
+
+Bluetooth Bug fixes:
+--------------------
+
+1) BT and BLE coex is supported with all the features unless specifically mentioned otherwise.
+2) Temperature based callibration for EDR/LE.
+
+BT Classic
+==========
+1) SSP Mode.
+2) Sniff and Sniff subrating with BT alone
+3) Tx power Control and enhanced power control
+4) Role switch 
+5) QoS for poll interval change
+6) Packet type change for ACL link
+7) Added new HCI commands:
+          Read clock, 
+          Read/write page timeout, 
+          Write IAC
+          Read Link Policy,
+          Write Link Policy,
+          Set Event Mask,
+          Read/Write Current IAC LAP,
+          Read AFH Channel Map,
+          Write SSP Debug Mode.
+
+BT LE
+=======
+1) Connection Params Updation and channel map update
+2) MD bit handling in Slave mode only.
+3) Slave Latency.
+4) BT LE Multiple Slaves.
+5) LE security (SMP)
+6) Whitelisting and Non whitelisting.
+7) All advertising modes.
+
+Bluetooth Limitations/Features NOT Supported:
+---------------------------------------------
+1) Sniff mode and role switch with coex is not supported.
+2) USB interface is not supported on USB 3.0 host controllers.
+
+
+Bluetooth Bug fixes:
+--------------------
+1) BT clean remove is not happenning in kernels below 3.5 version.
+2) HCI reset issue is fixed.
+3) L2test data transfer issue is fixed.
+4) BT/LE assertion in coex Mode is fixed.
+
+
+---------------------------
+Zigbee
+---------------------------
+
+
+New Features Added:
+---------------------------
+
+1) WiFi+Zigbee Coex supported. 
+2) Zigbee End Device.
+
+Zigbee Known Issues :
+---------------------
+1) In particular scenerios coex switching is not happening in the WiFi+Zigbee coex mode.
+2) USB interface is not supported on USB 3.0 host controllers.
+
+
+===================================================
+Release 1.0.1f (WIFI, WIFI+BT, WIFI+ZIGBEE images)
+===================================================
+
+Features supported:
+-------------------
+1) Support added for 4byte master read/writes.
+
+Bug fixes:
+---------
+1)Dynamic memory allocation for scan buffers in supplicant.
+
+
+Release 1.0.1e (WIFI, WIFI+BT, WIFI+ZIGBEE images)
+====================================================
+
+Features Supported:
+----------------------------
+1) Features included in 1.0.1d release. 
+2) Software BootLoader changes
+3) Support for Higher kernel versions till 3.16 version added.
+
+Note:
+-----
+    For the driver versions 1.0.1e and above, software boot loader is
+    required for driver to work. On RS9113 cards with out Software
+    boot loader, MBR and Software boot loader need to be flashed
+    onto the card.
+a) **  For Software Boot Loader flashing **
+    1)Ensure that proper RS9113_WC_BL_with_mbr.rps file is present in
+    the /home/rsi/release/firmware folder.
+    2)Run mbr_flash.sh present in /home/rsi/release folder to burn the
+    MBR and software bootloader.
+    # sh mbr_flash.sh
+    3)On successful flashing, you can see the print FIRMWARE
+    UPGRADED TO FLASH SUCCESSFULLY in dmesg.
+
+b) ** For Software Bottloader upgradation **
+    1)Ensure that proper RS9113_WC_BL.rps file is present in the
+    /home/rsi/release/firmware folder before running the script.
+    2) Run sbl_upgrade.sh script present in /home/rsi/release/ folder.
+    #sh sbl_upgrade.sh
+    3)On successful upgradation, you can see the print SWBL
+    FLASHING THROUGH SWBL PASSED... in dmesg.
+ 
+
+Limitations/Features NOT Supported:
+-----------------------------------
+1) Fragmentation is not supported
+2) DFS client and master modes not supported. Avoiding DFS channels in Background scan.
+3) 40Mhz in AP mode is not supported
+4) AMSDU is not supported
+5) BT clean remove is not happenning in kernels below 3.5 version.
+6) Individual protocol insertion /removal in coex mode is not working as expected.
+
+
+========================================================================================
+Release 1.0.1d (WIFI, WIFI+BT, WIFI+ZIGBEE images)
+====================================================
+
+Features Supported:
+----------------------------
+1) Common database for WIFI(standalone), WIFI+BT, WIFI+ZIGBEE images
+2) Added common host interface for USB
+3) Client in open/WEP/WPA/WPA2/Mixed mode 
+4) Access Point in Open/WPA/WPA2/WEP/Mixed modes
+5) WiFi-Direct support (GO, P2P-Client)
+6) Co-Existence support for wifi(Client mode) and zigbee(End Device),
+		WiFi(client mode) and BT (classic and LE modes).
+7) 802.11abgn (Single Stream),20Mhz and 40Mhz support
+8) Aggregation: AMPDU TX/RX 
+9) Autorate Support
+10) BSD interface support
+11) Background scanning in Client mode
+12) Roaming in Client mode
+13) Enterprise security in Client mode
+14) Supplicant 2.1 version
+15) WPS2.0
+16) Keep alive support in AP/Client modes
+17) LP Powersave support  
+18) Supports EEPROM version 5.
+19) WMM support
+
+
+
+Limitations/Features NOT Supported:
+-----------------------------------
+1) Fragmentation is not supported
+2) DFS client and master modes not supported. Avoiding DFS channels in Background scan.
+3) 40Mhz in AP mode is not supported
+4) AMSDU is not supported
+5) BT clean remove is not happenning in kernels below 3.5 version.
+6) Observed scan is getting stuck on IMX51 platform.
+
+========================================================================================
+
